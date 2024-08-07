@@ -1,18 +1,24 @@
 import { FC } from "react";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
-import { PostImage } from "../../types";
-export default function TodayImage({ date, url, title }: PostImage) {
+import { PostImage, NavigationProps } from "../../types";
+import { useNavigation } from "@react-navigation/native";
+
+export default function TodayImage({
+  date,
+  url,
+  title,
+  explanation,
+}: PostImage) {
+  const { navigate } = useNavigation<NavigationProps>();
+  const handleViewPress = () => {
+    navigate("Detail", { title, url, date, explanation });
+  };
   return (
     <View style={styles.container}>
       <Image source={{ uri: url }} style={styles.image} />
       <Text style={styles.tittle}>{title}</Text>
       <Text style={styles.date}>{date}</Text>
-      <Pressable
-        style={styles.button}
-        onPress={() => {
-          alert("View");
-        }}
-      >
+      <Pressable style={styles.button} onPress={handleViewPress}>
         <Text style={{ color: "white", fontSize: 16 }}>View</Text>
       </Pressable>
     </View>

@@ -41,15 +41,23 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Header />
-      <TodayImage {...todayImage} />
-      <LastFiveDaysImages arrayImages={last5daysImages} />
+      <View style={styles.homeContainer}>
+        <Header />
+        <TodayImage {...todayImage} />
+        <LastFiveDaysImages arrayImages={last5daysImages} />
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "rgba(7,26,93,255)",
+    width: "100%",
+    display: "flex",
+    flex: 1,
+  },
+  homeContainer: {
     display: "flex",
     width: "100%",
     maxWidth: 500,
